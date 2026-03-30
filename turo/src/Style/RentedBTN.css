@@ -5,8 +5,10 @@
     gap: 20px;
     align-items: center;
     justify-content: center;
-
     text-align: center ;
+    z-index: 1;
+    transition: 0.2s;
+
 }
 .rented button{
     padding: 10px 20px;
@@ -22,11 +24,16 @@
     font-weight: 500;
 
 }
-.rented button:hover{
-    background-color: black;
+.rented button:hover{  
+    border: 1px solid transparent;  
     border-radius: 12px;
+    color: black;
+    transform: translatey(5px);
+    background-color: rgba(195, 13, 13, 0.756);
     color: white;
 }
 .rented a{
     color: black;
+    transition: 0.2s;
+
 }

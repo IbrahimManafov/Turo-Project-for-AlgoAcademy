@@ -1,7 +1,7 @@
 .cardtwo{
   max-width: 1200px;
   width: 100%;
-  height: auto; /* sabit height kaldırdım */
+  height: auto;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -10,7 +10,7 @@
 .pages{
     display: flex;
     flex-direction: column;
-    gap: 30px; /* 🔥 boşluk artık çalışır */
+    gap: 30px;
 }
 
 .cardtwo h1{
@@ -20,19 +20,30 @@
 .car{
     display: flex;
     align-items: center;
-    gap: 20px; /* boxlar arası boşluk */
-    /* position ve top kaldırıldı */
+    gap: 20px;
+
+    overflow-x: auto;
+    overflow-y: hidden; /* 🔥 EKLE */
+    scroll-behavior: smooth;
+    padding-bottom: 10px;
+        scroll-snap-type: x mandatory;
+}
+.car::-webkit-scrollbar {
+    display: none; /* 🔥 EKLENDİ */
 }
 
 .box{
-    width: 300px;
+    width: 280px;
     height: auto;
+        scroll-snap-align: start;
     display: flex;
     align-items: flex-start; 
     flex-direction: column;
     justify-content: flex-start;
     gap: 10px;
     cursor: pointer;
+
+    flex-shrink: 0; /* 🔥 EKLENDİ (EN ÖNEMLİSİ) */
 }
 
 .box h1{
@@ -55,7 +66,47 @@
     margin-top: 5px;
 }
 
-.box a{
+.box i{
     color: #0b0199;
     font-size: 15px;
+}
+.pages{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    overflow-x: hidden;
+}
+.sidebtn{
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+
+
+}
+.buttons{
+    display: flex;
+    gap: 10px;
+}
+.sidebtn a{
+    color:#5b5b5b;
+    
+}
+.buttons button{
+    position: relative;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    padding: 7px;
+    background-color: #efefee;
+    cursor: pointer;
+    border: 1px solid #c5c5c3;
+    
+}
+.buttons button:hover{
+    transform: scale(1.03);
+    border: 1px solid transparent;
+    color: white;
+    background-color: rgb(174, 17, 17);
+    
 }

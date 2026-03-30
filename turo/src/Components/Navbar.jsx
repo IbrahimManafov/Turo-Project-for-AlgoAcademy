@@ -7,7 +7,7 @@ function Navbar() {
       <div className="navbar">
         <div className="navlogo">
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/9/92/Turo_company_logo.png"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2_CMBQHLaRWRkSOBjBOcomWYZRtromx44BQ&s"
             alt=""
           />
         </div>
