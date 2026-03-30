@@ -5,15 +5,21 @@ import Rented from './Components/Rented'
 import RentedBTN from './Components/RentedBTN'
 import CarCardTwo from './Components/CarCardTwo'
 import CarCardThere from './Components/CarCardThere'
+import NavHref from './Pages/NavHref'
+import CarCardFour from './Components/CarCardFour'
+import CardCardSix from './Components/CardCardSix'
 
 function App() {
   return (
     <div className="container">
-      <Navbar/>
-      <Rented/>
-      <RentedBTN/>
-      <CarCardTwo/>
-      <CarCardThere/>
+      <Navbar />
+      <NavHref />
+      <Rented />
+      <RentedBTN />
+      <CarCardTwo />
+      <CarCardThere />
+      <CarCardFour/>
+      <CardCardSix/>
     </div>
   )
 }
