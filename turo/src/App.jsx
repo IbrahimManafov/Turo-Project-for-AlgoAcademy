@@ -5,7 +5,6 @@ import Rented from './Components/Rented'
 import RentedBTN from './Components/RentedBTN'
 import CarCardTwo from './Components/CarCardTwo'
 import NavHref from './Pages/NavHref'
-
 import Footer from './Components/Footer'
 
 function App() {
@@ -16,6 +15,7 @@ function App() {
       <Rented />
       <RentedBTN />
       <CarCardTwo />
+      <Footer/>
     </div>
   )
 }
