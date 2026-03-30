@@ -3,8 +3,8 @@ import './App.css'
 import Navbar from './Components/Navbar'
 import Rented from './Components/Rented'
 import RentedBTN from './Components/RentedBTN'
-import CarCard from './Components/CarCard'
 import CarCardTwo from './Components/CarCardTwo'
+import CarCardThere from './Components/CarCardThere'
 
 function App() {
   return (
@@ -12,8 +12,8 @@ function App() {
       <Navbar/>
       <Rented/>
       <RentedBTN/>
-      <CarCard/>
       <CarCardTwo/>
+      <CarCardThere/>
     </div>
   )
 }
