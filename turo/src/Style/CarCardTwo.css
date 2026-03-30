@@ -22,7 +22,7 @@
     align-items: center;
     gap: 20px;
 
-    overflow-x: auto;
+    overflow-x: hidden;
     overflow-y: hidden; /* 🔥 EKLE */
     scroll-behavior: smooth;
     padding-bottom: 10px;
