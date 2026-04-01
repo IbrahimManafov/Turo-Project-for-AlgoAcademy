@@ -71,7 +71,7 @@ function CarCardTwo() {
       {sliders.map((slider, i) => (
         <div className="cardtwo" key={i}>
           <div className="sidebtn">
-            <h1>SUV rental at Manchester (MAN) airport</h1>
+            <h1>Affordable car rental in Newark</h1>
             <div className="buttons">
               <button onClick={() => scrollLeft(slider.ref)}>&lt;</button>
               <button onClick={() => scrollRight(slider.ref)}>&gt;</button>
