@@ -9,7 +9,7 @@ function Header() {
   return (
     <header className="header">
       <Link to="/" className="header-logo">
-        turo
+      <img src="https://i.ibb.co/RGCYWfYm/Screenshot-2.png" alt="" />
       </Link>
       
       <nav className="header-nav">

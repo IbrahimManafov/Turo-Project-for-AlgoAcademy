@@ -140,7 +140,7 @@ function Home() {
 
       {/* How it works */}
       <section className="how-it-works">
-        <h2>How Turo works</h2>
+        <h2>How Rental works</h2>
         <div className="steps">
           <div className="step">
             <div className="step-icon">

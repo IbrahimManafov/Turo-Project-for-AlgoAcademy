@@ -5,7 +5,7 @@ function Footer() {
     <footer className="footer">
       <div className="footer-content">
         <div className="footer-section">
-          <h4>Turo</h4>
+          <h4>Rental</h4>
           <Link to="/">About</Link>
           <Link to="/">Team</Link>
           <Link to="/">Policies</Link>
@@ -51,7 +51,7 @@ function Footer() {
       </div>
       
       <div className="footer-bottom">
-        <p>&copy; 2024 Turo Clone. All rights reserved. | Terms | Privacy | Sitemap</p>
+        <p>&copy; 2026 Rental . All rights reserved. | Terms | Privacy | Sitemap</p>
       </div>
     </footer>
   )
