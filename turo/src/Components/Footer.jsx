@@ -1,112 +1,60 @@
-import React from "react";
-import "../Style/Footer.css";
+import { Link } from 'react-router-dom'
 
 function Footer() {
   return (
     <footer className="footer">
-      {/* TOP LINKS */}
-      <div className="footer-top">
-        <div className="footer-links">
-          <h4>VEHICLE TYPES</h4>
-          <ul>
-            <li>Car rental</li>
-            <li>Convertible car rental</li>
-            <li>Electric car rental</li>
-            <li>Luxury car rental</li>
-            <li>Minivan rental</li>
-            <li>Box truck rental</li>
-            <li>Sport car rental</li>
-            <li>SUV rental</li>
-            <li>Truck rental</li>
-            <li>Van rental</li>
-            <li>Cargo van rental</li>
-          </ul>
+      <div className="footer-content">
+        <div className="footer-section">
+          <h4>Rental</h4>
+          <Link to="/">About</Link>
+          <Link to="/">Team</Link>
+          <Link to="/">Policies</Link>
+          <Link to="/">Careers</Link>
+          <Link to="/">Press</Link>
         </div>
-      </div>
-
-      {/* MAIN FOOTER */}
-      <div className="footer-main">
-        <div className="footer-col">
-          <h4>Turo</h4>
-          <ul>
-            <li>About</li>
-            <li>Team</li>
-            <li>Policies</li>
-            <li>Careers</li>
-            <li>Press</li>
-            <li>OpenRoad</li>
-          </ul>
-        </div>
-
-        <div className="footer-col">
+        
+        <div className="footer-section">
           <h4>Locations</h4>
-          <ul>
-            <li>USA (EN)</li>
-            <li>Australia (EN)</li>
-            <li>Canada (EN)</li>
-            <li>Canada (FR)</li>
-            <li>France (FR)</li>
-            <li>UK (EN)</li>
-          </ul>
+          <Link to="/search?location=Los Angeles">Los Angeles</Link>
+          <Link to="/search?location=San Francisco">San Francisco</Link>
+          <Link to="/search?location=Miami">Miami</Link>
+          <Link to="/search?location=New York">New York</Link>
+          <Link to="/search?location=Las Vegas">Las Vegas</Link>
         </div>
-
-        <div className="footer-col">
+        
+        <div className="footer-section">
           <h4>Explore</h4>
-          <ul>
-            <li>Why choose Turo</li>
-            <li>Pitch a trip</li>
-            <li>Trust & safety</li>
-            <li>Get help</li>
-          </ul>
+          <Link to="/search">Book a car</Link>
+          <Link to="/host">List your car</Link>
+          <Link to="/search?category=electric">Electric cars</Link>
+          <Link to="/search?category=sports">Sports cars</Link>
+          <Link to="/search?category=suv">SUVs</Link>
         </div>
-
-        <div className="footer-col">
+        
+        <div className="footer-section">
           <h4>Hosting</h4>
-          <ul>
-            <li>List your car</li>
-            <li>Calculator</li>
-            <li>All-Star Hosts</li>
-            <li>Host tools</li>
-            <li>Insurance & protection</li>
-            <li>Host learning hub</li>
-          </ul>
+          <Link to="/host">List your car</Link>
+          <Link to="/">Calculator</Link>
+          <Link to="/">Insurance</Link>
+          <Link to="/">Host tools</Link>
+          <Link to="/">Host guide</Link>
         </div>
-
-        {/* SOCIAL + APPS */}
-        <div className="footer-social">
-          <div className="social-text">Follow us:</div>
-          <div className="social-links">
-            <a href="#">Facebook</a>
-            <a href="#">Instagram</a>
-            <a href="#">TikTok</a>
-            <a href="#">YouTube</a>
-          </div>
-          <div className="apps">
-            <img
-              src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
-              alt="appstore"
-            />
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
-              alt="playstore"
-            />
-          </div>
-          <div className="language">🌐 English</div>
+        
+        <div className="footer-section">
+          <h4>Support</h4>
+          <Link to="/">Help center</Link>
+          <Link to="/">Contact us</Link>
+          <Link to="/">Trust & safety</Link>
+          <Link to="/">Cancellation</Link>
+          <Link to="/">Get the app</Link>
         </div>
       </div>
-
-      {/* BOTTOM */}
+      
       <div className="footer-bottom">
-        <p>© 2026 Turo, Inc.</p>
-        <div className="bottom-links">
-          <span>Terms</span>
-          <span>Privacy</span>
-          <span>Cookie preferences</span>
-          <span>Do not sell or share my personal information</span>
-        </div>
+        <p>&copy; 2026 Rental . All rights reserved. | Terms | Privacy | Sitemap</p>
       </div>
     </footer>
-  );
+  )
 }
 
-export default Footer;
+export default Footer
