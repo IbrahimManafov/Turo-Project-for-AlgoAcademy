@@ -45,11 +45,11 @@ function SignIn() {
           fontWeight: '700',
           color: '#593cfb'
         }}>
-          turo
+          Rental
         </Link>
         
         <h1>Welcome back</h1>
-        <p>Sign in to your Turo account</p>
+        <p>Sign in to your Rental account</p>
 
         {error && (
           <div className="message error">{error}</div>

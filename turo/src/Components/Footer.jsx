@@ -14,11 +14,11 @@ function Footer() {
 
         <div className="footer-section">
           <h4>Locations</h4>
-          <Link to="/search?location=Los Angeles">Los Angeles</Link>
-          <Link to="/search?location=San Francisco">San Francisco</Link>
-          <Link to="/search?location=Miami">Miami</Link>
-          <Link to="/search?location=New York">New York</Link>
-          <Link to="/search?location=Las Vegas">Las Vegas</Link>
+          <Link to="/search?location=Baku">Baku</Link>
+          <Link to="/search?location=Ganja">Ganja</Link>
+          <Link to="/search?location=Sumgait">Sumgait</Link>
+          <Link to="/search?location=Mingachevir">Mingachevir</Link>
+          <Link to="/search?location=Shaki">Shaki</Link>
         </div>
 
         <div className="footer-section">

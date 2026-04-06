@@ -57,11 +57,11 @@ function SignUp() {
           fontWeight: '700',
           color: '#593cfb'
         }}>
-          turo
+          Rental
         </Link>
         
         <h1>Create account</h1>
-        <p>Join Turo and start your journey</p>
+        <p>Join Rental and start your journey</p>
 
         {error && (
           <div className="message error">{error}</div>
@@ -109,7 +109,7 @@ function SignUp() {
           </div>
 
           <p style={{ fontSize: '12px', color: '#666' }}>
-            By signing up, you agree to Turo's <a href="#" style={{ color: '#593cfb' }}>Terms of Service</a> and <a href="#" style={{ color: '#593cfb' }}>Privacy Policy</a>.
+            By signing up, you agree to Rental's <a href="#" style={{ color: '#593cfb' }}>Terms of Service</a> and <a href="#" style={{ color: '#593cfb' }}>Privacy Policy</a>.
           </p>
 
           <button type="submit" className="btn btn-primary" disabled={loading}>
