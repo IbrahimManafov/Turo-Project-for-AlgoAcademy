@@ -1103,7 +1103,7 @@ export const cars = [
     model: "300",
     year: 2023,
     price: 135,
-    image: "https://cdn.motor1.com/images/mgl/JOOljn/s1/2023-chrysler-300c.jpg",
+    image: "https://images.unsplash.com/photo-1698095421356-133af152d9bc?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     images: ["https://cdn.motor1.com/images/mgl/JOOljn/s1/2023-chrysler-300c.jpg",
       "https://images.ctfassets.net/c9t6u0qhbv9e/1kf7i6zeIkTdHsH8XveiYo/e70e041dac7c2ff8d33035c6ed9a7c44/2023_Chrysler_300_Review_Lead_In.jpeg",
       "https://performanceautoprod-com.cdn-convertus.com/uploads/sites/73/2024/02/image-21-800x303.png",
