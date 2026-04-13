@@ -41,7 +41,7 @@ export const cars = [
     price: 175,
     image: "https://images.unsplash.com/photo-1701985203003-1e52f637cf98?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     images: [
-      "https://images.unsplash.com/photo-1617531653332-bd46c24f2068?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1701985203003-1e52f637cf98?q=80&w=872&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&h=600&fit=crop",
       "https://images.unsplash.com/photo-1681856447108-4cc76fff51c2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGJtdyUyMG00fGVufDB8fDB8fHww",
       "https://images.unsplash.com/photo-1660310477229-d03d8565f15d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"

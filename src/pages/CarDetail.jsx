@@ -15,7 +15,7 @@ function StarRating({ rating }) {
 function CarDetail() {
   const { id } = useParams()
   const navigate = useNavigate()
-  const { cars, user, addBooking, favorites, toggleFavorite } = useContext(AppContext)
+  const { cars, user, addBooking, favorites, toggleFavorite, reviews: allReviews, addReview } = useContext(AppContext)
   
   const car = cars.find(c => c.id === parseInt(id))
   const [selectedImage, setSelectedImage] = useState(0)
@@ -23,6 +23,10 @@ function CarDetail() {
   const [endDate, setEndDate] = useState('')
   const [message, setMessage] = useState('')
   const [showAllReviews, setShowAllReviews] = useState(false)
+  const [reviewRating, setReviewRating] = useState(5)
+  const [reviewComment, setReviewComment] = useState('')
+  const [reviewMessage, setReviewMessage] = useState('')
+  const [hoverRating, setHoverRating] = useState(0)
 
   if (!car) {
     return (
@@ -69,11 +73,24 @@ function CarDetail() {
     setTimeout(() => navigate('/dashboard?tab=bookings'), 2000)
   }
 
-  const reviews = car.reviews || []
+  const carReviews = allReviews ? allReviews.filter(r => r.carId === car.id) : []
+  const reviews = [...carReviews, ...(car.reviews || [])]
   const visibleReviews = showAllReviews ? reviews : reviews.slice(0, 4)
   const avgRating = reviews.length
     ? (reviews.reduce((s, r) => s + r.rating, 0) / reviews.length).toFixed(2)
     : car.rating.toFixed(1)
+
+  const handleReviewSubmit = () => {
+    if (!reviewComment.trim()) {
+      setReviewMessage('Zəhmət olmasa yorum yazın.')
+      return
+    }
+    addReview(car.id, { rating: reviewRating, comment: reviewComment })
+    setReviewComment('')
+    setReviewRating(5)
+    setReviewMessage('Yorumunuz əlavə edildi! ✓')
+    setTimeout(() => setReviewMessage(''), 3000)
+  }
 
   return (
     <div className="car-detail-page">
@@ -205,81 +222,170 @@ function CarDetail() {
             </div>
 
             {/* ===== REVIEWS ===== */}
-            {reviews.length > 0 && (
-              <div className="car-reviews" style={{ marginTop: '40px' }}>
+            <div className="car-reviews" style={{ marginTop: '40px' }}>
 
-                {/* Başlık */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '24px' }}>
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="#593cfb" stroke="#593cfb">
-                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-                  </svg>
-                  <h3 style={{ margin: 0, fontSize: '18px', fontWeight: '700' }}>
-                    {avgRating} · {reviews.length} reviews
-                  </h3>
-                </div>
+              {/* Başlıq */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '24px' }}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#593cfb" stroke="#593cfb">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                </svg>
+                <h3 style={{ margin: 0, fontSize: '18px', fontWeight: '700' }}>
+                  {reviews.length > 0 ? `${avgRating} · ${reviews.length} reviews` : 'No reviews yet'}
+                </h3>
+              </div>
 
-                {/* Reviews grid */}
+              {/* ===== YORUM FORMU ===== */}
+              {user ? (
                 <div style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-                  gap: '20px'
+                  border: '1px solid #e5e7eb',
+                  borderRadius: '12px',
+                  padding: '24px',
+                  marginBottom: '28px',
+                  background: '#fafafa'
                 }}>
-                  {visibleReviews.map((r) => (
-                    <div key={r.id} style={{
-                      border: '1px solid #e5e7eb',
-                      borderRadius: '12px',
-                      padding: '18px',
-                      background: '#fff'
-                    }}>
-                      {/* Üst kısım: avatar + isim + tarih */}
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
-                        <div style={{
-                          width: '42px', height: '42px', borderRadius: '50%',
-                          background: r.color, color: r.textColor,
-                          display: 'flex', alignItems: 'center', justifyContent: 'center',
-                          fontWeight: '700', fontSize: '16px', flexShrink: 0
-                        }}>
-                          {r.avatar}
-                        </div>
-                        <div style={{ flex: 1 }}>
-                          <div style={{ fontWeight: '600', fontSize: '14px', color: '#111' }}>{r.name}</div>
-                          <div style={{ fontSize: '12px', color: '#6b7280', marginTop: '2px' }}>{r.date}</div>
-                        </div>
-                        <StarRating rating={r.rating} />
-                      </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
+                    <img src={user.avatar} alt={user.name} style={{ width: '36px', height: '36px', borderRadius: '50%' }} />
+                    <span style={{ fontWeight: '600', fontSize: '15px' }}>{user.name}</span>
+                  </div>
 
-                      {/* Yorum metni */}
-                      <p style={{
-                        margin: 0, fontSize: '14px', color: '#374151',
-                        lineHeight: '1.6'
-                      }}>
-                        {r.text}
-                      </p>
-                    </div>
-                  ))}
-                </div>
+                  {/* Ulduz seçimi */}
+                  <div style={{ display: 'flex', gap: '4px', marginBottom: '14px' }}>
+                    {[1, 2, 3, 4, 5].map(star => (
+                      <span
+                        key={star}
+                        onClick={() => setReviewRating(star)}
+                        onMouseEnter={() => setHoverRating(star)}
+                        onMouseLeave={() => setHoverRating(0)}
+                        style={{
+                          fontSize: '28px',
+                          cursor: 'pointer',
+                          color: star <= (hoverRating || reviewRating) ? '#f59e0b' : '#d1d5db',
+                          transition: 'color 0.15s'
+                        }}
+                      >★</span>
+                    ))}
+                  </div>
 
-                {/* Show all / Show less butonu */}
-                {reviews.length > 4 && (
-                  <button
-                    onClick={() => setShowAllReviews(!showAllReviews)}
+                  {/* Textarea */}
+                  <textarea
+                    value={reviewComment}
+                    onChange={e => setReviewComment(e.target.value)}
+                    placeholder="Bu avtomobil haqqında təcrübənizi paylaşın..."
+                    rows={3}
                     style={{
-                      marginTop: '20px',
-                      padding: '10px 24px',
-                      border: '1px solid #111',
+                      width: '100%',
+                      padding: '12px',
+                      border: '1px solid #d1d5db',
                       borderRadius: '8px',
-                      background: '#fff',
+                      fontSize: '14px',
+                      resize: 'vertical',
+                      fontFamily: 'inherit',
+                      outline: 'none',
+                      boxSizing: 'border-box'
+                    }}
+                  />
+
+                  {reviewMessage && (
+                    <p style={{
+                      margin: '8px 0 0',
+                      fontSize: '13px',
+                      color: reviewMessage.includes('✓') ? '#16a34a' : '#dc2626'
+                    }}>
+                      {reviewMessage}
+                    </p>
+                  )}
+
+                  <button
+                    onClick={handleReviewSubmit}
+                    style={{
+                      marginTop: '12px',
+                      padding: '10px 24px',
+                      background: '#593cfb',
+                      color: '#fff',
+                      border: 'none',
+                      borderRadius: '8px',
                       fontWeight: '600',
                       fontSize: '14px',
-                      cursor: 'pointer',
-                      color: '#111'
+                      cursor: 'pointer'
                     }}
                   >
-                    {showAllReviews ? 'Show less' : `Show all ${reviews.length} reviews`}
+                    Yorum göndər
                   </button>
-                )}
+                </div>
+              ) : (
+                <div style={{
+                  border: '1px dashed #d1d5db',
+                  borderRadius: '12px',
+                  padding: '20px',
+                  marginBottom: '28px',
+                  textAlign: 'center',
+                  color: '#6b7280',
+                  fontSize: '14px'
+                }}>
+                  Yorum əlavə etmək üçün{' '}
+                  <Link to="/signin" style={{ color: '#593cfb', fontWeight: '600' }}>daxil olun</Link>
+                </div>
+              )}
+              {/* ===== YORUM FORMU END ===== */}
+
+              {/* Reviews grid */}
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+                gap: '20px'
+              }}>
+                {visibleReviews.map((r) => (
+                  <div key={r.id} style={{
+                    border: '1px solid #e5e7eb',
+                    borderRadius: '12px',
+                    padding: '18px',
+                    background: '#fff'
+                  }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
+                      <div style={{
+                        width: '42px', height: '42px', borderRadius: '50%',
+                        background: r.color || '#ede8fc',
+                        color: r.textColor || '#5b3db5',
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        fontWeight: '700', fontSize: '16px', flexShrink: 0
+                      }}>
+                        {r.avatar || (r.author ? r.author[0] : '?')}
+                      </div>
+                      <div style={{ flex: 1 }}>
+                        <div style={{ fontWeight: '600', fontSize: '14px', color: '#111' }}>
+                          {r.name || r.author}
+                        </div>
+                        <div style={{ fontSize: '12px', color: '#6b7280', marginTop: '2px' }}>{r.date}</div>
+                      </div>
+                      <StarRating rating={r.rating} />
+                    </div>
+                    <p style={{ margin: 0, fontSize: '14px', color: '#374151', lineHeight: '1.6' }}>
+                      {r.text || r.comment}
+                    </p>
+                  </div>
+                ))}
               </div>
-            )}
+
+              {/* Show all / Show less */}
+              {reviews.length > 4 && (
+                <button
+                  onClick={() => setShowAllReviews(!showAllReviews)}
+                  style={{
+                    marginTop: '20px',
+                    padding: '10px 24px',
+                    border: '1px solid #111',
+                    borderRadius: '8px',
+                    background: '#fff',
+                    fontWeight: '600',
+                    fontSize: '14px',
+                    cursor: 'pointer',
+                    color: '#111'
+                  }}
+                >
+                  {showAllReviews ? 'Show less' : `Show all ${reviews.length} reviews`}
+                </button>
+              )}
+            </div>
             {/* ===== REVIEWS END ===== */}
 
           </div>
