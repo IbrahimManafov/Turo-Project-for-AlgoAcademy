@@ -1,4 +1,3 @@
-# 🚗 Rental — Car Booking Platform
 
 <p align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f2027,50:203a43,100:00d4ff&height=220&section=header&text=Rental&fontSize=50&fontColor=ffffff&animation=fadeIn" />
